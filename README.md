@@ -79,7 +79,16 @@ For more details, refer to the schema.graphql file in the graphql directory.
 ### Third-party Integration
 
 This demo  includes a dummy integration with Microsoft Todo API. It does not actually connect with the API, 
-but rather shows how the Service can be implemented using a proper code structure and allowing for future extensions.  
+but rather shows how the Service can be implemented using a proper code structure and allowing for future extensions.
+
+#### Synchronisation
+
+##### To 3rd party services
+Todos between the system and 3rd party integrations are kept in sync via Laravel's built-in feature of backend jobs.
+
+#### From 3rd party services
+Todos created by 3rd party services are to be synce with the system. This feature is not implemented 
+because the actuall implementation can be very different from one service to another (i.e. using webhooks, file imports, special API endpoints, etc.)
 
 ## Testing
 Run the PHPUnit tests:
