@@ -57,7 +57,7 @@ API authentication works through Laravel Sanctum package. Password for all seede
 
 ### GraphQL Schema
 
-The API is built using GraphQL. Below are the main types and operations available.
+The API is built using GraphQL via 3rd party Laravel package `Lighthouse`. Below are the main types and operations available.
 
 #### Types
 - User: Represents a user in the system.
