@@ -77,15 +77,14 @@ The API is built using GraphQL. Below are the main types and operations availabl
 For more details, refer to the schema.graphql file in the graphql directory. 
 
 ### Third-party Integration
-// Describe how to set up and use third-party integrations like Microsoft Todo.
+
+This demo  includes a dummy integration with Microsoft Todo API. It does not actually connect with the API, 
+but rather shows how the Service can be implemented using a proper code structure and allowing for future extensions.  
 
 ## Testing
 Run the PHPUnit tests:
 
-bash
-Copy code
-./vendor/bin/phpunit
-
+`php artisan test`
 
 
 
