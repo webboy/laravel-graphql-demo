@@ -1,0 +1,37 @@
+# graphql/schema.graphql
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    created_at: String
+    updated_at: String
+    todos: [Todo!]! @hasMany
+    todoLists: [TodoList!]! @hasMany
+}
+
+type TodoList {
+  id: ID!
+  name: String!
+  todos: [Todo!]! @hasMany
+  user: User! @belongsTo
+}
+
+type Query {
+    me: User @auth @guard
+}
+
+enum TodoStatus {
+    PENDING @enum(value: 0)
+    COMPLETED @enum(value: 1)
+    ABORTED @enum(value: 2)
+}
+
+type Mutation{
+    login(
+        email: String! @rules(apply: ["required","email"]),
+        password: String! @rules(apply: ["required"])
+    ): String!
+}
+
+#import todo.graphql
