@@ -6,7 +6,6 @@ use App\Models\Todo;
 
 class AcmeTodoService implements \App\Services\TodoService\TodoServiceInterface
 {
-
     public function fetchTodos()
     {
         // TODO: Implement fetchTodos() method.

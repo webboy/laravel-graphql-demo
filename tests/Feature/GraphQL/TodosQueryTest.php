@@ -7,7 +7,6 @@ use App\Models\Todo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\GraphQLTestCase;
 
-
 class TodosQueryTest extends GraphQLTestCase
 {
     use RefreshDatabase;

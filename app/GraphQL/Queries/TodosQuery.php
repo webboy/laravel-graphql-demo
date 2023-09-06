@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\GraphQL\Queries;
 
@@ -11,10 +13,7 @@ use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
 final class TodosQuery extends GraphQLQuery
 {
     /**
-     * @param null $rootValue
-     * @param array{} $args
-     * @param GraphQLContext $context
-     * @return LengthAwarePaginator
+     * @param  array{}  $args
      */
     public function __invoke($rootValue, array $args, GraphQLContext $context): LengthAwarePaginator
     {
@@ -22,8 +21,10 @@ final class TodosQuery extends GraphQLQuery
          * @var User $user
          */
         $user = $context->user();
+
         return Todo::where('user_id', $user->id)
             ->byStatus($args['status'] ?? null)
+            ->byTodoListId($args['todo_list_id'] ?? null)
             ->paginate($args['first'] ?? $this->default_per_page);
     }
 }

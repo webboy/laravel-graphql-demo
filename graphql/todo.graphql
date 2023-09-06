@@ -2,8 +2,11 @@ type Todo {
     id: ID!
     title: String!
     status: TodoStatus
+    scheduled_at: DateTime
     user: User! @belongsTo
     todoList: TodoList @belongsTo
+    created_at: DateTime
+    updated_at: DateTime
 }
 
 extend type Mutation {
@@ -12,6 +15,7 @@ extend type Mutation {
         description: String,
         status: TodoStatus,
         todo_list_id: Int,
+        scheduled_at: DateTime
     ): Todo! @guard @validator(class: "App\\GraphQL\\Validators\\CreateTodoValidator")
 
     updateTodo(
@@ -19,12 +23,13 @@ extend type Mutation {
         title: String,
         description: String,
         status: TodoStatus,
-        todo_list_id: Int
+        todo_list_id: Int,
+        scheduled_at: DateTime
     ): Todo! @guard @validator(class: "App\\GraphQL\\Validators\\UpdateTodoValidator")
 
 }
 
 extend type Query{
-    todos(status: TodoStatus): [Todo!]! @guard @paginate(resolver: "App\\GraphQL\\Queries\\TodosQuery")
+    todos(status: TodoStatus, todo_list_id: Int): [Todo!]! @guard @paginate(resolver: "App\\GraphQL\\Queries\\TodosQuery")
     todo(id: ID @eq @rules(apply: ["required","integer"])): Todo @guard @field(resolver: "App\\GraphQL\\Queries\\TodoQuery")
 }

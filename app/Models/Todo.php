@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use Database\Factories\TodoFactory;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 
 /**
@@ -21,6 +22,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  * @property-read TodoList|null $todoList
  * @property-read User $user
+ *
  * @method static TodoFactory factory($count = null, $state = [])
  * @method static Builder|Todo newModelQuery()
  * @method static Builder|Todo newQuery()
@@ -33,13 +35,28 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Todo whereUpdatedAt($value)
  * @method static Builder|Todo whereUserId($value)
  * @method static Builder|Todo byStatus($status = null)
- * @mixin \Eloquent
+ *
+ * @property string|null $description
+ * @property string|null $scheduled_at
+ *
+ * @method static Builder|Todo byTodoListId(?int $todo_list_id = null)
+ * @method static Builder|Todo whereDescription($value)
+ * @method static Builder|Todo whereScheduledAt($value)
+ *
+ * @mixin Eloquent
  */
 class Todo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'status', 'todo_list_id', 'user_id'];
+    protected $fillable = [
+        'title',
+        'status',
+        'description',
+        'scheduled_at',
+        'todo_list_id',
+        'user_id',
+    ];
 
     public function user(): BelongsTo
     {
@@ -53,9 +70,17 @@ class Todo extends Model
 
     public function scopeByStatus(Builder $query, $status = null): Builder
     {
-        if (!empty($status))
-        {
+        if (! empty($status)) {
             $query->where('status', $status);
+        }
+
+        return $query;
+    }
+
+    public function scopeByTodoListId(Builder $query, int $todo_list_id = null): Builder
+    {
+        if (! empty($todo_list_id)) {
+            $query->where('todo_list_id', $todo_list_id);
         }
 
         return $query;

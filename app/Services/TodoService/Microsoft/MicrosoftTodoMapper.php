@@ -9,9 +9,6 @@ class MicrosoftTodoMapper
 {
     /**
      * Map a MicrosoftTodoDTO to a local Todo model.
-     *
-     * @param MicrosoftTodoDTO $dto
-     * @return Todo
      */
     public function toLocalModel(MicrosoftTodoDTO $dto): Todo
     {
@@ -25,9 +22,6 @@ class MicrosoftTodoMapper
 
     /**
      * Map a local Todo model to a MicrosoftTodoDTO.
-     *
-     * @param Todo $todo
-     * @return MicrosoftTodoDTO
      */
     public function toForeignModel(Todo $todo): MicrosoftTodoDTO
     {

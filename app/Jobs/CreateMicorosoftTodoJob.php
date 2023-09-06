@@ -5,7 +5,6 @@ namespace App\Jobs;
 use App\Models\Todo;
 use App\Services\TodoService\TodoServiceFactory;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -25,6 +24,7 @@ class CreateMicorosoftTodoJob implements ShouldQueue
 
     /**
      * Execute the job.
+     *
      * @throws \Exception
      */
     public function handle(): void

@@ -25,7 +25,7 @@ class TodoFactory extends Factory
             'todo_list_id' => TodoList::factory(),
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
-            'status' => TodoStatus::PENDING->value
+            'status' => TodoStatus::PENDING->value,
         ];
     }
 }

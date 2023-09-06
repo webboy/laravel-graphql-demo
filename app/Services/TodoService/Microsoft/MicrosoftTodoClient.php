@@ -9,7 +9,6 @@ class MicrosoftTodoClient
     /**
      * Fetch all todos from Microsoft Todo API.
      *
-     * @return array
      * @throws Exception
      */
     public function getTodos(): array
@@ -25,8 +24,6 @@ class MicrosoftTodoClient
     /**
      * Create a new todo in Microsoft Todo API.
      *
-     * @param array $data
-     * @return array
      * @throws Exception
      */
     public function createTodo(array $data): array
@@ -39,9 +36,6 @@ class MicrosoftTodoClient
     /**
      * Update an existing todo in Microsoft Todo API.
      *
-     * @param int $id
-     * @param array $data
-     * @return array
      * @throws Exception
      */
     public function updateTodo(int $id, array $data): array

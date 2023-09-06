@@ -4,13 +4,12 @@ namespace Tests\Feature\GraphQL;
 
 use App\Models\Todo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\GraphQLTestCase;
-use Tests\TestCase;
 
 class TodoQueryTest extends GraphQLTestCase
 {
     use RefreshDatabase;
+
     /**
      * A basic feature test example.
      */

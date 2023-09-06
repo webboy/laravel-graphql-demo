@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\GraphQL\Mutations;
 
@@ -15,7 +17,7 @@ final class UpdateTodo
 
         //Dispatch sync job
         $id = 123; //Harcoded foreign ID for now
-        dispatch(new UpdateMicorosoftTodoJob($id,$todo));
+        dispatch(new UpdateMicorosoftTodoJob($id, $todo));
 
         return $todo;
     }

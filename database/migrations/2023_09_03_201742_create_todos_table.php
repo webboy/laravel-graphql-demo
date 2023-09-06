@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('todo_list_id')->nullable()->index();
             $table->string('title');
             $table->text('description')->nullable();
+            $table->timestamp('scheduled_at')->nullable()->index();
             $table->tinyInteger('status')->default(TodoStatus::PENDING->value)->index();
             $table->timestamps();
         });

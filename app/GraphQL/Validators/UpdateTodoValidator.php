@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\GraphQL\Validators;
 
@@ -27,10 +29,10 @@ final class UpdateTodoValidator extends Validator
                 }),
             ],
             'title' => [
-                'string'
+                'string',
             ],
             'status' => [
-                new Enum(TodoStatus::class)
+                new Enum(TodoStatus::class),
             ],
             'todo_list_id' => [
                 'integer',
@@ -38,12 +40,14 @@ final class UpdateTodoValidator extends Validator
                     $query->where('user_id', $userId);
                 }),
             ],
+            'scheduled_at' => [
+                'date',
+            ],
         ];
     }
+
     /**
      * Get the validation error messages.
-     *
-     * @return array
      */
     public function messages(): array
     {

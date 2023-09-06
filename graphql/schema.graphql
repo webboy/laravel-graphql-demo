@@ -1,20 +1,25 @@
 # graphql/schema.graphql
 
+scalar DateTime
+@scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
 type User {
     id: ID!
     name: String!
     email: String!
-    created_at: String
-    updated_at: String
+    created_at: DateTime
+    updated_at: DateTime
     todos: [Todo!]! @hasMany
     todoLists: [TodoList!]! @hasMany
 }
 
 type TodoList {
-  id: ID!
-  name: String!
-  todos: [Todo!]! @hasMany
-  user: User! @belongsTo
+    id: ID!
+    name: String!
+    todos: [Todo!]! @hasMany
+    user: User! @belongsTo
+    created_at: DateTime
+    updated_at: DateTime
 }
 
 type Query {

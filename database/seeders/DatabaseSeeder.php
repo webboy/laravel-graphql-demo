@@ -23,9 +23,8 @@ class DatabaseSeeder extends Seeder
 
             $lists = TodoList::factory(2)->create(['user_id' => $user->id]);
             foreach ($lists as $list) {
-                Todo::factory(3)->create(['user_id' => $user->id, 'todo_list_id'=> $list->id]);
+                Todo::factory(3)->create(['user_id' => $user->id, 'todo_list_id' => $list->id]);
             }
-
 
         }
     }

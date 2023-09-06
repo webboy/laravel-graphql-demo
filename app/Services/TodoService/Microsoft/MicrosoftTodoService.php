@@ -9,6 +9,7 @@ use App\Services\TodoService\TodoServiceInterface;
 class MicrosoftTodoService implements TodoServiceInterface
 {
     protected MicrosoftTodoClient $client;
+
     protected MicrosoftTodoMapper $mapper;
 
     public function __construct(MicrosoftTodoClient $client, MicrosoftTodoMapper $mapper)
@@ -19,8 +20,6 @@ class MicrosoftTodoService implements TodoServiceInterface
 
     /**
      * Fetch all todos from Microsoft Todo API and map them to local models.
-     *
-     * @return array
      */
     public function fetchTodos(): array
     {
@@ -34,9 +33,6 @@ class MicrosoftTodoService implements TodoServiceInterface
 
     /**
      * Create a new todo in Microsoft Todo API.
-     *
-     * @param Todo $todo
-     * @return Todo
      */
     public function createTodo(Todo $todo): Todo
     {

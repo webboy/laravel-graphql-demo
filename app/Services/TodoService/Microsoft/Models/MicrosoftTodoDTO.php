@@ -5,6 +5,7 @@ namespace App\Services\TodoService\Microsoft\Models;
 class MicrosoftTodoDTO
 {
     public ?int $id;
+
     public ?string $title;
     // ... other fields
 
@@ -18,8 +19,8 @@ class MicrosoftTodoDTO
     public function toArray(): array
     {
         return [
-            'id'        => $this->id,
-            'title'     => $this->title,
+            'id' => $this->id,
+            'title' => $this->title,
             //implement other propertuies
         ];
     }
